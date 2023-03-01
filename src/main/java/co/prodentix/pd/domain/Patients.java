@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 import co.prodentix.pd.domain.Enumerations.Sex;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.mapstruct.ap.internal.model.GeneratedType;
 
 @Entity
@@ -13,7 +14,7 @@ import org.mapstruct.ap.internal.model.GeneratedType;
 public class Patients implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GeneratedType.SEQUENCE, generator = "sequenceGenerator")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
@@ -64,6 +65,16 @@ public class Patients implements Serializable {
     @Size(max = 100)
     @Column(name = "document_number", length = 100, nullable = false)
     private String documentNumber;
+
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private User user;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties(value = {"patients"}, allowGetters = true)
+    private DocumentType documentType;
 
 
 

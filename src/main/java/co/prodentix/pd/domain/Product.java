@@ -1,4 +1,4 @@
 package co.prodentix.pd.domain;
 
-public class Categories {
+public class Product {
 }

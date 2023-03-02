@@ -1,12 +1,11 @@
 package co.prodentix.pd.domain.Enumerations;
 
-public enum Categories {
-    PROSTHESIS("Protesis")
-    ;
-
+public enum Storage {
+    ANESTHESIA("Anestesia"),
+    TWEEZERS("Pinzas");
     private final String value;
 
-    Categories(String value){
+    Storage(String value){
         this.value = value;
     }
 

@@ -53,9 +53,9 @@ public class Patients implements Serializable {
     private String secondLastName;
 
     @NotNull
-    @Size(max = 10)
-    @Column(name = "sex_type", length = 10, nullable = false)
-    private String sexType;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sex_type", nullable = false)
+    private Sex sexType;
 
 
     @NotNull
@@ -169,20 +169,22 @@ public class Patients implements Serializable {
         this.secondLastName = secondLastName;
     }
 
-    public String getSexType() {
-        return sexType;
+    public Sex getSexType() {
+
+        return this.sexType;
     }
 
     public Patients sexType(Sex sexType){
         this.setSexType(sexType);
         return this;
     }
-    public void setSexType(String sexType) {
+    public void setSexType(Sex sexType) {
+
         this.sexType = sexType;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public Patients email(String email){

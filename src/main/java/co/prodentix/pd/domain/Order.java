@@ -24,7 +24,7 @@ public class Order implements Serializable {
 
     @NotNull
     @Column(name = "date", nullable = false)
-    private Long date;
+    private LocalDate date;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -57,16 +57,16 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public Long getDate() {
-        return date;
-    }
 
+    public LocalDate getDate(){
+        return this.date;
+    }
     public Order date(LocalDate date){
         this.setDate(date);
         return this;
 
     }
-    public void setDate(Long date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
